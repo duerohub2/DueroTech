@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brutal-border-color: #1f1f1f;
+  --brutal-shadow-color: #1f1f1f;
+  --page-bg: #fdf8e8;
+  --card-bg: #ffffff;
+  --text-color: #1f1f1f;
+  --muted-color: #6a6a6a;
+}
+
+.dark {
+  --brutal-border-color: #fdf8e8;
+  --brutal-shadow-color: #fdf8e8;
+  --page-bg: #1a1a1a;
+  --card-bg: #262626;
+  --text-color: #fdf8e8;
+  --muted-color: #9a9a9a;
+}
+
+html,
+body {
+  background-color: var(--page-bg);
+  color: var(--text-color);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer base {
+  * {
+    border-color: var(--brutal-border-color);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-archivo-black), system-ui, sans-serif;
+    letter-spacing: -0.03em;
+  }
+}
+
+@layer components {
+  .brutal-border {
+    border: 3px solid var(--brutal-border-color);
+  }
+
+  .brutal-shadow {
+    box-shadow: 5px 5px 0 0 var(--brutal-shadow-color);
+  }
+
+  .brutal-shadow-sm {
+    box-shadow: 3px 3px 0 0 var(--brutal-shadow-color);
+  }
+
+  .brutal-card {
+    background-color: var(--card-bg);
+    border: 3px solid var(--brutal-border-color);
+    box-shadow: 5px 5px 0 0 var(--brutal-shadow-color);
+    color: var(--text-color);
+  }
+
+  .brutal-input {
+    border: 3px solid var(--brutal-border-color);
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    width: 100%;
+    outline: none;
+  }
+
+  .brutal-input::placeholder {
+    color: var(--muted-color);
+    font-weight: 600;
+  }
+
+  .brutal-input:focus {
+    outline: none;
+    box-shadow: 3px 3px 0 0 #b8a4e8;
+  }
+
+  .brutal-btn {
+    border: 3px solid var(--brutal-border-color);
+    box-shadow: 5px 5px 0 0 var(--brutal-shadow-color);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    transition: all 0.12s ease;
+    color: var(--text-color);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .brutal-btn:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 0 transparent;
+  }
+
+  .code-scroll {
+    scrollbar-width: thin;
+  }
+
+  .code-scroll::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  .code-scroll::-webkit-scrollbar-thumb {
+    background: #b8a4e8;
+    border: 2px solid #1f1f1f;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes brutal-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.brutal-skeleton {
+  background-color: var(--card-bg);
+  border: 3px solid var(--brutal-border-color);
+  box-shadow: 5px 5px 0 0 var(--brutal-shadow-color);
+  animation: brutal-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes modal-slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.modal-slide-up {
+  animation: modal-slide-up 0.25s ease-out;
+}
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-fade-in {
+  animation: modal-fade-in 0.2s ease-out;
+}
